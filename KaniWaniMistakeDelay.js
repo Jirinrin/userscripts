@@ -1,23 +1,44 @@
 // ==UserScript==
-// @name        Kaniwani Mistake Delay
-// @namespace   WKMistakeDelay
-// @description Disables 'Enter' for one second after making a mistake.
-// @include     https://kaniwani.com/reviews/session*
-// @include     https://kaniwani.com/reviews/session*
-// @version     0.0.1
+// @name         Kaniwani Mistake Delay
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Disables 'Enter' for one second after making a mistake.
+// @author       You
+// @match        https://kaniwani.com/reviews/session*
+// @grant        none
 // ==/UserScript==
 
 
-const msDelay = 1000;
+(function() {
+  'use strict';
 
-/* Incorrect Last Answer Booleans */
-const incorrectLastAnswer = false;
-const blockDisabledChange = false;
+  const msDelay = 1000;
 
-let form = document.querySelector('form');
+  const RED = 'rgb(226, 50, 91)';
 
-console.log(form);
+  let inputField;
 
-// form.addEventListener('submit', () => {
-//   console.log('hi')
-// });
+
+  setTimeout(() => {
+    inputField = document.querySelector('form > div');
+
+    inputField.addEventListener('change', e => {
+      setTimeout(() => {
+
+        if (window.getComputedStyle(inputField).backgroundColor === RED) {
+          window.addEventListener('keydown',  disableSubmit, true);
+          setTimeout(() => {
+            window.removeEventListener('keydown',  disableSubmit, true);
+          }, msDelay);
+        }
+
+      }, 0)
+    });
+
+  }, 2000);
+
+  function disableSubmit(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+})();
