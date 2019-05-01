@@ -38,7 +38,9 @@
   }, 2000);
 
   function disableSubmit(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    if (e.code === 'Enter' || e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   }
 })();
