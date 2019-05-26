@@ -5,6 +5,7 @@
 // @description  Automatically fills in the 3 fields when email downloading on bandcamp or sth
 // @author       You
 // @match        https://*.bandcamp.com/album/*
+// @match        https://*.bandcamp.com/track/*
 // @grant        none
 // ==/UserScript==
 
