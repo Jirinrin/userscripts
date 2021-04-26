@@ -6,6 +6,8 @@
 // @author       You
 // @match        https://*.bandcamp.com/album/*
 // @match        https://*.bandcamp.com/track/*
+// @match        https://music.gamechops.com/album/*
+// @match        https://music.gamechops.com/track/*
 // @grant        none
 // ==/UserScript==
 
