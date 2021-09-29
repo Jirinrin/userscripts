@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         BandcampEmailDownload
+// @name         GoogleLyricsEnter
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  Puts extra enters after paragraphs in lyrics preview in Google
