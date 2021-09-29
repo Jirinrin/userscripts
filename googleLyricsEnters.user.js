@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GoogleLyricsEnter
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Puts extra enters after paragraphs in lyrics preview in Google
 // @author       You
 // @match        https://www.google.com/search*
