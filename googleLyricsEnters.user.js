@@ -4,27 +4,23 @@
 // @version      0.1
 // @description  Puts extra enters after paragraphs in lyrics preview in Google
 // @author       You
-// @match        https://*.google.com/search
+// @match        https://www.google.com/search*
 // @grant        none
 // ==/UserScript==
 
 (function() {
-  document.addEventListener('load', () => {
-    console.log('page load');
-    var lyricsTopParent = document.querySelector('data-attrid="kc:/music/recording_cluster:lyrics"')
-    console.log('top parent', lyricsTopParent)
-    var lyricsParent = lyricsTopParent?.querySelector('div > div > div > div > div:nth-child(2)')
-    console.log('parent', lyricsParent)
-    var children = lyricsParent?.querySelectorAll('div')
+  var lyricsTopParent = document.querySelector('[data-attrid="kc:/music/recording_cluster:lyrics"]');
+  var lyricsParent = lyricsTopParent?.querySelector('div > div > div > div > div:nth-child(2)');
+  var children = lyricsParent?.querySelectorAll('div');
 
-    if (!children)
-      return;
+  if (!children) {
+    return;
+  }
+  console.log('Found lyrics');
 
-    children.forEach(c => {
-      console.log('c', c)
-      var empt = document.createElement('span')
-      empt.innerHTML = '\n'
-      c.appendChild(empt)
-    })
+  children.forEach(c => {
+    var empt = document.createElement('span');
+    empt.innerHTML = '<br></br>';
+    c.appendChild(empt);
   })
 })();
