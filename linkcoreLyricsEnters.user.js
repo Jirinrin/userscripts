@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LinkcoreLyricsEnters
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  Formats linkcore lyrics to be easier to copy-paste
 // @author       You
 // @match        https://linkco.re/*
@@ -18,7 +18,6 @@
   console.log('Found lyrics');
 
   const groups = [...children].reduce((acc, c) => {
-    console.log(c.innerHTML);
     if (c.innerHTML)
       acc[acc.length-1].push(c);
     else {
@@ -29,7 +28,6 @@
 
     return acc;
   }, [[]]);
-  console.log('groups', groups)
 
   groups.forEach(g => {
     const p = document.createElement('p');
