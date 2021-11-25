@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         GoogleLyricsEnter
+// @name         LinkcoreLyricsEnters
 // @namespace    http://tampermonkey.net/
 // @version      0.2
 // @description  Formats linkcore lyrics to be easier to copy-paste
