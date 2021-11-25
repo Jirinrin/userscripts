@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LinkcoreLyricsEnters
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Formats linkcore lyrics to be easier to copy-paste
 // @author       You
 // @match        https://linkco.re/*
