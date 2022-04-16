@@ -10,7 +10,7 @@ async function wishlistAllAlbums() {
       console.warn('Could not open', url)
       continue
     }
-    await new Promise((res) => setTimeout(res, 2000))
+    await new Promise((res) => setTimeout(res, 2500))
     // todo: properly await t opening using an event listener for 'load' or sth on t.window
     t.focus()
     var w = t.document.querySelector('.wishlist a')
@@ -27,6 +27,7 @@ async function wishlistAllAlbums() {
       continue
     }
   }
+  console.log('Done!')
 }
 
 // Run in your wishlist page. It will go through the visible items and unwishlist the ones of which title/description match the passed pattern
@@ -52,4 +53,5 @@ async function unwishlistAlbumsWithPattern(ptn) {
       }
     t.close()
   }
+  console.log('Done!')
 }
