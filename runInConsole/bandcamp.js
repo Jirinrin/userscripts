@@ -1,18 +1,31 @@
+// todo: try to do things like these with cypress?
+
 // Run in a label's albums ('music') page to wishlist all albums.
 async function wishlistAllAlbums() {
   var albumUrls = [...document.querySelectorAll('.music-grid-item > a')].map(a => a.href)
   // console.log('albums', albums)
   for (var url of albumUrls) {
-    var t = window.open(url, '_blank')` `
+    var t = window.open(url, '_blank')
+    if (!t) {
+      console.warn('Could not open', url)
+      continue
+    }
     await new Promise((res) => setTimeout(res, 2000))
+    // todo: properly await t opening using an event listener for 'load' or sth on t.window
     t.focus()
-      var w = t.document.querySelector('.wishlist a')
-      if (w) {
-        w.click()
-        await new Promise((res) => setTimeout(res, 1500))
-        console.log('Wishlisted:', url)
-      }
-    t.close()
+    var w = t.document.querySelector('.wishlist a')
+    if (w) {
+      w.click()
+      await new Promise((res) => setTimeout(res, 1500))
+      console.log('Wishlisted:', url)
+      t.close()
+    } else if (t.document.querySelector('.wishlisted')) {
+      console.info('Already wishlisted:', url)
+      t.close()
+    } else {
+      console.warn('Has no wishlist info:', url)
+      continue
+    }
   }
 }
 
