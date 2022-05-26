@@ -2,6 +2,7 @@
 
 // Run in a label's albums ('music') page to wishlist all albums.
 async function wishlistAllAlbums() {
+  var thisHost = window.location.host
   var albumUrls = [...document.querySelectorAll('.music-grid-item > a')].map(a => a.href)
   // console.log('albums', albums)
   for (var url of albumUrls) {
@@ -13,6 +14,10 @@ async function wishlistAllAlbums() {
     await new Promise((res) => setTimeout(res, 2500))
     // todo: properly await t opening using an event listener for 'load' or sth on t.window
     t.focus()
+    if (new URL(url).hostname !== thisHost) {
+      console.warn('Different host, so please check by yourself:', url)
+      continue
+    }
     var w = t.document.querySelector('.wishlist a')
     if (w) {
       w.click()
